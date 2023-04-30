@@ -1,2 +1,52 @@
-# DB
- Db project
+# DB project
+
+A sneaker store where the basket is implemented in the database
+
+## Stack
+
+#### Frontend
+
+- Typescript
+- React
+- Redux
+- Tailwindcss
+
+#### Backend
+
+- Typescript
+- NestJs
+- Sequelize (PostgreSQL)
+
+## Run
+
+#### Install modules
+
+```
+npm i
+```
+
+#### Start client
+
+```
+npm run start
+```
+
+#### Start client
+
+```
+npm run start:dev
+```
+
+#### Build
+
+```
+npm run build
+```
+
+#### Start production (after build client and server)
+
+run command in server folder (server will serve static client)
+
+```
+npm run start:prod
+```
