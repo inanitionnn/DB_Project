@@ -31,7 +31,7 @@ npm i
 npm run start
 ```
 
-#### Start client
+#### Start server
 
 ```
 npm run start:dev
