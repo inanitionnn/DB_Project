@@ -5,7 +5,7 @@ import { CartProduct } from 'src/cart/cartProduct/cartProduct.entity';
 import { Product } from 'src/products/product.entity';
 import { User } from 'src/users/user.entity';
 import { DatabaseService } from './database.service';
-import { ProductQueries } from 'queries/productQueries';
+import { ProductQueries } from 'src/queries/productQueries';
 import { IProduct } from 'src/products/interfaces/product.interface';
 import * as uuid from 'uuid';
 

@@ -2,6 +2,10 @@
 
 A sneaker store where the basket is implemented in the database
 
+##### PS
+
+This site was written in a day. And then it was used to test various testing libraries
+
 ## Stack
 
 #### Frontend

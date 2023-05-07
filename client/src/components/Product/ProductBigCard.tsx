@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { IProduct } from "../interfaces/product.interfaces";
-import { ButtonBorder } from "../UI";
-import { useAddProductMutation } from "../redux/api/cartApi";
-import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { toast } from "react-toastify";
-import { setCartState } from "../redux/reducers/cartSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { useAddProductMutation } from "../../redux/api/cartApi";
+import { setCartState } from "../../redux/reducers/cartSlice";
+import { ButtonBorder } from "../../UI";
+import { IProduct } from "../../interfaces/product.interfaces";
 
 interface ProductCardProps {
   product: IProduct;
@@ -47,6 +47,7 @@ export default function ProductBigCard({
               addProductMutation({ productId: product.id, userId: userId });
               toast.success(`${product.name} added to cart`);
             }}
+            data-testid={`${product.name.split(" ")[1].toLowerCase()}-button`}
           >
             add to cart
           </ButtonBorder>

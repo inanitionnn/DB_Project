@@ -2,20 +2,24 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { IUser } from './interfaces/user.interface';
 import * as uuid from 'uuid';
-import { UserQueries } from '../../queries/userQueries';
+import { UserQueries } from '../queries/userQueries';
 import { CreateUserDto } from './interfaces/create-user.dto';
 import { DatabaseService } from 'src/database/database.service';
+import { ConfigService } from '@nestjs/config';
 @Injectable()
 export class UsersService {
-  constructor(private databaseService: DatabaseService) {}
-  public async getUserById(id: string): Promise<IUser> {
+  constructor(
+    private databaseService: DatabaseService,
+    private configService: ConfigService,
+  ) {}
+  public async getUserById(id: string): Promise<IUser | null> {
     const users: IUser[] = await this.databaseService.executeQuery(
       UserQueries.SELECT_USER_BY_ID,
       [id],
     );
     const user = users[0];
     if (!user) {
-      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+      return null;
     }
     return user;
   }
@@ -32,11 +36,14 @@ export class UsersService {
     return user;
   }
 
-  private hash(text, saltRounds): Promise<string> {
+  private hash(text: string, saltRounds: number): Promise<string> {
     return new Promise((resolve, reject) => {
-      bcrypt.hash(text, saltRounds, function (err, hash) {
-        if (err) reject(err);
-        else resolve(hash);
+      bcrypt.hash(text, saltRounds, (err, hash) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(hash);
+        }
       });
     });
   }
@@ -51,9 +58,8 @@ export class UsersService {
     }
 
     const id = uuid.v4();
-    const saltRounds = +process.env.SALT_ROUNDS;
+    const saltRounds = this.configService.get('saltRounds');
     const hashedPassword = await this.hash(dto.password, saltRounds);
-
     try {
       const newUsers: IUser[] = await this.databaseService.executeQuery(
         UserQueries.CREATE_NEW_USER,

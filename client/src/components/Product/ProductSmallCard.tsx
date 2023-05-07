@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import { ButtonBorder } from "../UI";
+import { ButtonBorder } from "../../UI";
 import {
   useAddProductMutation,
   useSubtractProductMutation,
-} from "../redux/api/cartApi";
-import { useAppDispatch, useAppSelector } from "../redux/hook";
+} from "../../redux/api/cartApi";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { toast } from "react-toastify";
-import { setCartState } from "../redux/reducers/cartSlice";
-import { ICartProduct } from "../interfaces/cart.interfaces";
+import { setCartState } from "../../redux/reducers/cartSlice";
+import { ICartProduct } from "../../interfaces/cart.interfaces";
 
 interface ProductCardProps {
   product: ICartProduct;

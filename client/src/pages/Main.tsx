@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 import { useGetCartQuery } from "../redux/api/cartApi";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { setCartState } from "../redux/reducers/cartSlice";
-import ProductBigCard from "../components/ProductBigCard";
 import { setProductState } from "../redux/reducers/productSlice";
+import ProductBigCard from "../components/Product/ProductBigCard";
 
 export const Main: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -48,7 +48,10 @@ export const Main: React.FC = () => {
     }
   }, [productsError]);
   return (
-    <div className="bg-white rounded-md m-[4rem] w-[80rem]">
+    <div
+      className="bg-white rounded-md m-[4rem] w-[80rem]"
+      data-testid="main-page"
+    >
       <Header />
       {isLoading ? (
         <div>Loading</div>

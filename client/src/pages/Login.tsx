@@ -42,7 +42,10 @@ export const Login: React.FC = () => {
       {isLoading ? (
         <div>loading</div>
       ) : (
-        <div className="bg-white rounded-md m-auto h-fit">
+        <div
+          data-testid="login-page"
+          className="bg-white rounded-md m-auto h-fit"
+        >
           <div className="my-[3rem] mx-[5rem]">
             <h2 className="font-extrabold text-3xl text-center mb-[2rem]">
               Login
@@ -50,6 +53,7 @@ export const Login: React.FC = () => {
             <form
               onSubmit={handleSubmit}
               className="text-xl font-semibold space-y-[2rem]"
+              data-testid="login-form"
             >
               <div className="">
                 <h3 className="mb-[0.5rem]">Email</h3>
@@ -59,6 +63,7 @@ export const Login: React.FC = () => {
                   name="email"
                   required
                   onChange={handleChange}
+                  data-testid="login-email-input"
                 />
               </div>
               <div>
@@ -69,14 +74,21 @@ export const Login: React.FC = () => {
                   name="password"
                   required
                   onChange={handleChange}
+                  data-testid="login-password-input"
                 />
               </div>
               <div className="flex justify-center">
-                <ButtonBorder type="submit">Sign in</ButtonBorder>
+                <ButtonBorder type="submit" data-testid="login-submit-button">
+                  Sign in
+                </ButtonBorder>
               </div>
             </form>
             <div className="mt-[2rem]">
-              <Link to="registration" className=" text-center group">
+              <Link
+                to="registration"
+                className=" text-center group"
+                data-testid="registration-link"
+              >
                 <p className="text-center text-lg font-medium text-gray-900 decoration-double decoration-red-800">
                   Don`t have account?
                 </p>

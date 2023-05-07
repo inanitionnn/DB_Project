@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { IProduct } from './interfaces/product.interface';
-import { ProductQueries } from 'queries/productQueries';
+import { ProductQueries } from 'src/queries/productQueries';
 
 @Injectable()
 export class ProductsService {

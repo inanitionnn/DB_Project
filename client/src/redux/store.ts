@@ -25,16 +25,16 @@ const rootReducer = combineReducers({
   cart: cartSlice,
   user: userSlice,
   product: productSlice,
-  [authApi.reducerPath]: authApi.reducer,
+  [authApi.reducerPath]: authApi.reducer || (() => null),
   [cartApi.reducerPath]: cartApi.reducer,
   [productApi.reducerPath]: productApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = configureStore({
-  reducer: persistedReducer,
-  // reducer: rootReducer,
+export const appStore = configureStore({
+  // reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware({
       serializableCheck: {
@@ -47,7 +47,7 @@ export const store = configureStore({
   ],
 });
 
-export const persistor = persistStore(store);
+// export const persistor = persistStore(store);
 
-export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof appStore.dispatch;
+export type RootState = ReturnType<typeof appStore.getState>;

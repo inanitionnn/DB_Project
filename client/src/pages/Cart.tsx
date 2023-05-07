@@ -4,7 +4,7 @@ import { ButtonBorder } from "../UI";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { toast } from "react-toastify";
 import { setCartLogoutState } from "../redux/reducers/cartSlice";
-import ProductSmallCard from "../components/ProductSmallCard";
+import ProductSmallCard from "../components/Product/ProductSmallCard";
 import { useDeleteProductsMutation } from "../redux/api/cartApi";
 
 export const Cart: React.FC = () => {
@@ -28,7 +28,10 @@ export const Cart: React.FC = () => {
   }, [error]);
 
   return (
-    <div className="bg-white rounded-md m-[4rem] w-[80rem]">
+    <div
+      className="bg-white rounded-md m-[4rem] w-[80rem]"
+      data-testid="cart-page"
+    >
       <div className="py-[2rem] px-[3rem] flex justify-between mb-[2rem]">
         <div className="flex items-center">
           <img
@@ -43,7 +46,9 @@ export const Cart: React.FC = () => {
             </h2>
           </div>
         </div>
-        <ButtonBorder onClick={() => navigate(-1)}>Back</ButtonBorder>
+        <ButtonBorder data-testid="main-link" onClick={() => navigate(-1)}>
+          Back
+        </ButtonBorder>
       </div>
       {products.length !== 0 && (
         <>

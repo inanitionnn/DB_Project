@@ -49,10 +49,13 @@ export const Registration: React.FC = () => {
       {isLoading ? (
         <div>Loading</div>
       ) : (
-        <div className="bg-white rounded-md m-auto h-fit">
+        <div
+          className="bg-white rounded-md m-auto h-fit"
+          data-testid="registration-page"
+        >
           <div className="relative my-[3rem] mx-[5rem]">
             <div className=" absolute -right-[2rem] -bottom-[1rem]">
-              <Link to="/" className="">
+              <Link to="/" data-testid="login-link">
                 <p
                   className="text-center text-xl font-semibold text-gray-900 
           decoration-red-400  hover:underline
@@ -76,6 +79,7 @@ export const Registration: React.FC = () => {
                   name="name"
                   required
                   onChange={handleChange}
+                  data-testid="registration-name-input"
                 />
               </div>
               <div>
@@ -85,6 +89,7 @@ export const Registration: React.FC = () => {
                   name="email"
                   required
                   onChange={handleChange}
+                  data-testid="registration-email-input"
                 />
               </div>
               <div>
@@ -94,10 +99,16 @@ export const Registration: React.FC = () => {
                   name="password"
                   required
                   onChange={handleChange}
+                  data-testid="registration-password-input"
                 />
               </div>
               <div className="flex justify-center">
-                <ButtonBorder type="submit">Sign up</ButtonBorder>
+                <ButtonBorder
+                  type="submit"
+                  data-testid="registration-submit-button"
+                >
+                  Sign up
+                </ButtonBorder>
               </div>
             </form>
           </div>

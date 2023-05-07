@@ -9,7 +9,7 @@ import {
 import { IUser } from 'src/users/interfaces/user.interface';
 import { UsersService } from 'src/users/users.service';
 import { ProductsService } from 'src/products/products.service';
-import { CartQueries } from 'queries/cartQueries';
+import { CartQueries } from 'src/queries/cartQueries';
 import * as uuid from 'uuid';
 import { IProduct } from 'src/products/interfaces/product.interface';
 

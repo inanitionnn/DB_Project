@@ -32,10 +32,12 @@ export const Header: React.FC = () => {
               dispatch(setlogOutState());
               dispatch(setProductLogoutState());
             }}
+            data-testid="logout-button"
           >
             Logout
           </ButtonBorder>
           <Link
+            data-testid="cart-link"
             to="cart"
             className="mr-[0.5rem] flex items-center gap-[1rem] rounded-full 
           border-[2px] border-red-400 px-[1rem] bg-inherit text-gray-900
